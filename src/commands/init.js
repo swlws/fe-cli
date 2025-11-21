@@ -8,19 +8,12 @@ import { copyTemplate } from '../utils/render.js';
 import { installDeps } from '../utils/install.js';
 import { getTemplateList } from '../utils/getTemplates.js';
 
-function choiceTemplate() {}
-
 export default async function init(name) {
   console.log(chalk.cyan(`\n✨ 创建项目：${name}\n`));
 
-  const templateList = getTemplateList();
-
-  console.log(templateList);
-
-  const templates = getTemplateList();
   const answers = await select({
     message: '请选择模板',
-    choices: templates.map((template) => ({
+    choices: getTemplateList().map((template) => ({
       name: template,
       value: template,
     })),
